@@ -3,7 +3,7 @@ const mysql = require('mysql');
 const connection = mysql.createConnection({
     host: 'localhost',
     port: PORT,
-    user: 'root',
-    password: 'root',
-    database: 'expensetracker_db',
+    user: db_process.env.DB_USER,
+    password: db_process.env.DB_PASSWORD,
+    database: db_process.env.DB_NAME,
   });
