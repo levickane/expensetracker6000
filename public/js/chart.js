@@ -1,9 +1,9 @@
 var ctx = document.getElementById('myChart');
 
 var myChart = new Chart(ctx, {
-  type: 'bar',
+  type: 'line',
   data: {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    labels: ['Red'],
     datasets: [
       {
         label: '# of Votes',
