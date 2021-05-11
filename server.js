@@ -3,14 +3,12 @@ const express = require('express');
 const path = require('path');
 const routes = require('./controllers');
 
-
-
 // Sets up the Express App
 const app = express();
 const PORT = process.env.PORT || 3001;
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({});
-const session = require('express-session');
+// const session = require('express-session');
 // const sequelize = require('./config/connection');
 
 // const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -31,10 +29,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
-app.use("/", function(req, res){
-  res.send("Hello World");
-})
-
+app.use('/', function (req, res) {
+  res.send('Hello World');
+});
 
 // Starts the server to begin listening
 app.listen(PORT, () => {
