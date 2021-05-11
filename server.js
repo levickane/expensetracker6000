@@ -31,6 +31,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
+app.use("/", function(req, res){
+  res.send("Hello World");
+})
+
 
 // Starts the server to begin listening
 app.listen(PORT, () => {
