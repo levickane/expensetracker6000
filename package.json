@@ -1,5 +1,5 @@
 {
-  "name": "expensetracker6000",
+  "name": "expense-tracker",
   "version": "1.0.0",
   "description": "The upgrade to the expense tracker",
   "main": "server.js",
