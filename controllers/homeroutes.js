@@ -43,8 +43,8 @@ router.get('/monthname', (req, res) => {
   );
 });
 
-router.get('/home', withAuth, (req, res) {
-    res.render('homepage')
-})
+router.get('/home', withAuth, (req, res) => {
+  res.render('homepage');
+});
 
 module.exports = router;
