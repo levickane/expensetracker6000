@@ -9,7 +9,7 @@ const exphbs = require('express-handlebars');
 const hbs = exphbs.create({});
 
 
-
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const sess = {
   secret: 'Super secret secret',
   cookie: {},
