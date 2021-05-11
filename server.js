@@ -1,7 +1,7 @@
 // Dependencies
 const express = require('express');
 const path = require('path');
-
+const routes = require('./controllers');
 
 
 
@@ -11,7 +11,6 @@ const PORT = process.env.PORT || 3001;
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({});
 const session = require('express-session');
-const test;
 // const sequelize = require('./config/connection');
 
 // const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -25,7 +24,7 @@ const test;
 //   })
 // };
 // app.use(session(sess));
-
+app.use(routes);
 app.use(express.static(path.join(__dirname, 'public')));
 // Sets up the routes
 // app.use(require('./controllers/dish-routes'));
