@@ -1,6 +1,8 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const bcrypt = require('bcrypt');
+const User = require('../models2/user');
 
+// Added comments describing the functionality of this `login` route
 router.post('/', async (req, res) => {
   try {
     const userData = await User.create(req.body);
@@ -18,7 +20,6 @@ router.post('/', async (req, res) => {
 
 router.post('/login', async (req, res) => {
   try {
-    // Find the user who matches the posted e-mail address
     const userData = await User.findOne({ where: { email: req.body.email } });
 
     if (!userData) {
@@ -28,7 +29,6 @@ router.post('/login', async (req, res) => {
       return;
     }
 
-    // Verify the posted password with the password store in the database
     const validPassword = await userData.checkPassword(req.body.password);
 
     if (!validPassword) {
@@ -38,7 +38,6 @@ router.post('/login', async (req, res) => {
       return;
     }
 
-    // Create session variables based on the logged in user
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
@@ -52,7 +51,6 @@ router.post('/login', async (req, res) => {
 
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
-    // Remove the session variables
     req.session.destroy(() => {
       res.status(204).end();
     });
